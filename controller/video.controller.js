@@ -7,13 +7,15 @@ let findAllVideo = async (req, res, next) => {
 
 let addVideo = async (req, res, next) => {
   let data = req.body;
-  console.log(data);
-  let video = await Video.create({ ...data, category: "Chotki" });
-  //   let video = new Video();
-  //   video.title = req.body.title;
-  //   video.duration = req.body.duration;
-  //   video.author = req.body.author;
-  //   video.category = "Chotki";
+
+  console.log(data, "---body");
+  console.log(req.files);
+
+  let video = await Video.create({
+    ...data,
+    category: "Chotki",
+    // banner: req.file.path,
+  });
 
   await video.save();
 
